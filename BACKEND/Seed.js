@@ -1,19 +1,15 @@
 var mongoose = require("mongoose");
-var User = require("./models/user.model");
+var User = require("./models/User");
+require("dotenv").config();
 
-var MongoURL = "MONGO_URL";
-mongoose.connect(
-  MongoURL,
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
-  (err, db) => {
-    if (err) return console.log(err);
-    global.db = mongoose.connection;
-    global.db.on(
-      "error",
-      console.error.bind(console, "MongoDB connection error:")
-    );
-  }
-);
+const URL = process.env.MONGODB_URL;
+
+mongoose.connect(URL);
+
+const connection = mongoose.connection;
+connection.once("open", () => {
+  console.log("Mongodb Connection Success!");
+});
 
 function addAdmin() {
   var user = new User({
@@ -21,7 +17,7 @@ function addAdmin() {
     password: "admin",
     accountType: "admin",
   });
-  user.setPassword(user.password);
+
   user.save();
 }
 
