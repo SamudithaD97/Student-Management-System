@@ -6,7 +6,7 @@ MERN Stack Project
 * [Setup](#setup)
 
 ## General info
-This project is Student Management System.
+This project is Student Management System. This is use to manage users and their notes. Only admin can add users and then users can edit their details and manage their notes.
 	
 ## Technologies
 Project is created with:
