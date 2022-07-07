@@ -6,14 +6,16 @@ const Login = () => {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
   const RegisterUser = (event) => {
-   let data=user;
-   data.status=true; 
+    let data = user;
+    data.status = true;
     console.log("adding");
     axios
-      .put(`http://localhost:8070/user/update/${localStorage.getItem("userId")}`, data)
+      .put(
+        `http://localhost:8070/user/update/${localStorage.getItem("userId")}`,
+        data
+      )
       .then((result) => {
-          navigate("/Login");
-        
+        navigate("/Login");
       })
       .catch((err) => {
         console.log(err);
@@ -83,14 +85,10 @@ const Login = () => {
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
             </div>
-
-            
           </form>
-          <button  className="btn btn-primary"
-            onClick={()=>RegisterUser()}
-            >
-              Submit
-            </button>
+          <button className="btn btn-primary" onClick={() => RegisterUser()}>
+            Submit
+          </button>
         </div>
       </div>
     </div>

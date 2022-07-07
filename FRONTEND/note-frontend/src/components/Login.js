@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
-
+import logo from "./logoPng.png";
+import welcomeimg from "./welcomeback.svg";
 const Login = () => {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
@@ -10,16 +11,15 @@ const Login = () => {
     console.log("adding");
     axios
       .post(`http://localhost:8070/user/login`, user)
-      .then((result) =>{ 
-        if(result.data.profile.accountType==="admin"){
-            localStorage.setItem("userData",JSON.stringify(result.data.profile))
-            navigate("/Admin");
-        }
-        else if (result.data.profile.status) {
-            localStorage.setItem("userData",JSON.stringify(result.data.profile))
+      .then((result) => {
+        if (result.data.profile.accountType === "admin") {
+          localStorage.setItem("userData", JSON.stringify(result.data.profile));
+          navigate("/Admin");
+        } else if (result.data.profile.status) {
+          localStorage.setItem("userData", JSON.stringify(result.data.profile));
           navigate("/");
         } else {
-            localStorage.setItem("userId",result.data.profile.id)
+          localStorage.setItem("userId", result.data.profile.id);
           navigate("/Register");
         }
       })
@@ -28,9 +28,13 @@ const Login = () => {
       });
   };
   return (
-    <div className="container my-3">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
+    <div className="main-login">
+      <div className="login-contain">
+        <div className="left-side">
+          <div className="img-class">
+            <img src={logo} id="img-id" alt="" />
+          </div>
+
           <form>
             <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className="form-label">
@@ -58,22 +62,18 @@ const Login = () => {
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
             </div>
-            <div className="mb-3 form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              />
-              <label className="form-check-label" for="exampleCheck1">
-                Check me out
-              </label>
-            </div>
-            
           </form>
-          <button  className="btn btn-primary"
-            onClick={()=>LoginUser()}>
-              Submit
-            </button>
+          <button className="btn btn-primary" onClick={() => LoginUser()}>
+            Submit
+          </button>
+          <div className="right-side">
+            <div className="welcomeNote">
+              <h3>Welcome Back!</h3>
+            </div>
+            <div className="welcomeImg">
+              <img src={welcomeimg} id="wel-img-id" alt="" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

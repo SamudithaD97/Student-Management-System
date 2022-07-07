@@ -6,21 +6,22 @@ import GetUser from "./GetUser";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
-
 function Admin() {
-  const [password, setPassword] = useState("")
- const [email, setEmail] = useState("")
- const [user, setUser] = useState([])
- const [viewUser ,setviewUser] = useState("")
- 
-const navigate = useNavigate();
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [user, setUser] = useState([]);
+  const [viewUser, setviewUser] = useState("");
 
- useEffect(() => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
     fetchData();
-    if(!("userData" in localStorage)){
-        navigate("/Login"); 
-    }else if(JSON.parse(localStorage.getItem("userData")).accountType!=="admin"){
-        navigate("/"); 
+    if (!("userData" in localStorage)) {
+      navigate("/Login");
+    } else if (
+      JSON.parse(localStorage.getItem("userData")).accountType !== "admin"
+    ) {
+      navigate("/");
     }
   }, []);
 
@@ -42,27 +43,23 @@ const navigate = useNavigate();
         email={email}
         setEmail={setEmail}
         setPassword={setPassword}
-
         fetchData={fetchData}
-        
-      /> 
+      />
       <div className="container">
         <div className="row justify-content center">
           <div className="col-md-10">
             <h1 className="mb-3">Users</h1>
-            {user.length>0 ? user.map((user)=>(<GetUser
-             key={user._id} user={user}
-             setviewUser={setviewUser}
-            
-             />)):<p>No Users To Display</p>}
-            
+            {user.length > 0 ? (
+              user.map((user) => (
+                <GetUser key={user._id} user={user} setviewUser={setviewUser} />
+              ))
+            ) : (
+              <p>No Users To Display</p>
+            )}
           </div>
         </div>
       </div>
-      <UserModal 
-        viewUser={viewUser}
-        
-      />
+      <UserModal viewUser={viewUser} />
     </>
   );
 }

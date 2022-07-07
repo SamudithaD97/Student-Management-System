@@ -1,9 +1,7 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-
-export default function UserModal({ viewUser}) {
- 
+export default function UserModal({ viewUser }) {
   return (
     <>
       <div
@@ -27,14 +25,15 @@ export default function UserModal({ viewUser}) {
               ></button>
             </div>
             <div className="modal-body">
-              <p>First Name:{viewUser &&  viewUser.firstName}</p>
-              <p>Last Name:{viewUser &&  viewUser.lastName}</p>
-              <p>Email:{viewUser &&  viewUser.email}</p>
-              <p>Date Of Birth:{viewUser &&  viewUser.dateOfBirth}</p>
-              <p>mobile:{viewUser &&  viewUser.mobile}</p>
-              <p>status:{viewUser &&  (viewUser.status?"Active":"Inactive")}</p>
+              <p>First Name:{viewUser && viewUser.firstName}</p>
+              <p>Last Name:{viewUser && viewUser.lastName}</p>
+              <p>Email:{viewUser && viewUser.email}</p>
+              <p>Date Of Birth:{viewUser && viewUser.dateOfBirth}</p>
+              <p>mobile:{viewUser && viewUser.mobile}</p>
+              <p>
+                status:{viewUser && (viewUser.status ? "Active" : "Inactive")}
+              </p>
             </div>
-            
           </div>
         </div>
       </div>

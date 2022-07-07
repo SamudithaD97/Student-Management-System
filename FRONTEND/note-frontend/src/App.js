@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Notes from './components/Notes';
 import Login from './components/Login';
 import Admin from './components/Admin';
+import  './App.css';
 import Register from './components/Register';
 import {
   BrowserRouter,

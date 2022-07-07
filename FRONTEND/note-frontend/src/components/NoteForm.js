@@ -9,7 +9,7 @@ export default function NoteForm({
   setdesc,
   notes,
   setNotes,
-  fetchData
+  fetchData,
 }) {
   const inputHandler = (e) => {
     console.log(e.target.value);
@@ -22,29 +22,27 @@ export default function NoteForm({
   };
 
   const { handleSubmit } = useForm({
-    mode: "onBlur"
+    mode: "onBlur",
   });
-
 
   const addNotesHandler = (e) => {
     console.log("adding");
     axios
-      .post(`http://localhost:8070/note/add`,{
-          title:title,
-          description:desc,
-          ownerId:JSON.parse(localStorage.getItem("userData")).id
-          
-        })
+      .post(`http://localhost:8070/note/add`, {
+        title: title,
+        description: desc,
+        ownerId: JSON.parse(localStorage.getItem("userData")).id,
+      })
       .then((result) => {
         fetchData();
-        
+
         console.log("notes");
       })
       .catch((err) => {
         console.log(err);
       });
-      settitle("");
-      setdesc("");
+    settitle("");
+    setdesc("");
   };
   return (
     <>
@@ -52,7 +50,7 @@ export default function NoteForm({
         <div className="row justify-content-center">
           <div className="col-md-10">
             <form
-            onSubmit={handleSubmit(addNotesHandler)}
+              onSubmit={handleSubmit(addNotesHandler)}
               style={{
                 border: "2px solid #212529",
                 borderRadius: "10px",
@@ -69,7 +67,7 @@ export default function NoteForm({
                   id="title"
                   placeholder="Enter Your Title"
                   value={title}
-                  onChange={(e)=>inputHandler(e)}
+                  onChange={(e) => inputHandler(e)}
                 />
               </div>
               <div className="mb-3">
@@ -83,14 +81,11 @@ export default function NoteForm({
                   className="form-control"
                   placeholder="Enter Your Description"
                   value={desc}
-                  onChange={(e)=>inputHandler(e)}
+                  onChange={(e) => inputHandler(e)}
                 ></textarea>
               </div>
 
-              <button
-                type="submit"
-                className="btn btn-primary"
-              >
+              <button type="submit" className="btn btn-primary">
                 Add Notes
               </button>
             </form>

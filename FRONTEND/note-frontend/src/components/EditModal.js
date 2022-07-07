@@ -1,21 +1,20 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-
 export default function EditModal({ edit, fetchData }) {
- const [Title, setTitle] = useState("")
- const [Desc, setDesc] = useState("")
+  const [Title, setTitle] = useState("");
+  const [Desc, setDesc] = useState("");
   useEffect(() => {
-    setTitle(edit.title)
-    setDesc(edit.description)
-  }, [edit])
-  
+    setTitle(edit.title);
+    setDesc(edit.description);
+  }, [edit]);
+
   const updateNote = (event) => {
     console.log("adding");
     axios
       .put(`http://localhost:8070/note/update/${edit.id}`, {
         title: Title,
-        description: Desc
+        description: Desc,
       })
       .then((result) => {
         fetchData();
@@ -48,7 +47,7 @@ export default function EditModal({ edit, fetchData }) {
               ></button>
             </div>
             <div className="modal-body">
-              <form >
+              <form>
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">
                     Title
@@ -59,7 +58,7 @@ export default function EditModal({ edit, fetchData }) {
                     id="edittitle"
                     placeholder="Enter Your Title"
                     value={Title}
-                    onChange={(e)=>setTitle(e.target.value)}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
                 <div className="mb-3">
@@ -73,7 +72,7 @@ export default function EditModal({ edit, fetchData }) {
                     className="form-control"
                     placeholder="Enter Your Description"
                     value={Desc}
-                    onChange={(e)=>setDesc(e.target.value)}
+                    onChange={(e) => setDesc(e.target.value)}
                   ></textarea>
                 </div>
               </form>
