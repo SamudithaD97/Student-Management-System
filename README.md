@@ -16,14 +16,14 @@ Project is created with:
 	
 ## Setup
 To run this project, install it locally using npm:
-FOR front-end
 ```
+FOR FRONT-END
+
 $ cd FRONTEND
 $ cd note-frontend
 $ npm start
 
-For back-end
-
+For BACK-END
 
 $ cd BACKEND
 $ npm run start
