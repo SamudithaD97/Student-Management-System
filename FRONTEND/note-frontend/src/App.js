@@ -19,7 +19,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Notes/>}></Route>
-         <Route path="/login" element={<Login/>} /> 
+         <Route path="/Login" element={<Login/>} /> 
          <Route path="/Register" element={<Register/>} />
          <Route path="/Admin" element={<Admin/>} />
       </Routes>

@@ -11,6 +11,7 @@ function Admin() {
   const [email, setEmail] = useState("");
   const [user, setUser] = useState([]);
   const [viewUser, setviewUser] = useState("");
+  const [search, setSearch] = useState([]);
 
 
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function Admin() {
   }, []);
 
   function onSearch(e){
-    setUser(user.filter(function (user) { 
+    setSearch(user.filter(function (user) { 
       return user.email.toLowerCase().includes(e.target.value.toLowerCase()) || 
       (user.firstName && user.firstName.toLowerCase().includes(e.target.value.toLowerCase()) )||
       (user.lastName && user.lastName.toLowerCase().includes(e.target.value.toLowerCase())) ||
@@ -41,6 +42,7 @@ function Admin() {
       .get(`http://localhost:8070/user/display`)
       .then((result) => {
         setUser(result.data);
+        setSearch(result.data);
         console.log(user);
       })
       .catch((err) => {
@@ -76,8 +78,8 @@ function Admin() {
         <div className="row justify-content center">
           <div className="col-md-10">
             <h1 className="mb-3">Users</h1>
-            {user.length > 0 ? (
-              user.map((user) => (
+            {search.length > 0 ? (
+              search.map((user) => (
                 <GetUser key={user._id} user={user} setviewUser={setviewUser} />
               ))
             ) : (
