@@ -5,28 +5,28 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     
     firstName : {
-        type : String,
-        required : true //validation
+        type : String
+        
     },
     lastName : {
-        type : String,
-        required : true //validation
+        type : String
+        
     },
     email : {
         type : String,
         required : true //validation
     },
     dateOfBirth : {
-        type : Date,
-        required : true //validation
+        type : Date
+        
     },
     mobile : {
-        type : Number,
-        required : true //validation
+        type : Number
+        
     },
     status : {
-        type : Boolean,
-        required : true //validation
+        type : Boolean
+        
     },
     password : {
         type : String,
@@ -34,10 +34,10 @@ const userSchema = new Schema({
     },
     accountType : {
         type : String,
-        required : true //validation
+        default:"user"
+        
     },
-    notes: [{type: mongoose.Schema.ObjectId, ref: 'Note'}],
-
+    
 
 })
 
