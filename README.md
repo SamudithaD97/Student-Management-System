@@ -22,10 +22,10 @@ $ cd FRONTEND
 $ cd note-frontend
 $ npm install
 $ npm start
-``
+
 For back-end
 
-```
+
 $ cd BACKEND
 $ npm install
 $ npm run start
