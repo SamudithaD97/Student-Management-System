@@ -12,6 +12,7 @@ function Admin() {
   const [user, setUser] = useState([]);
   const [viewUser, setviewUser] = useState("");
 
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,6 +25,16 @@ function Admin() {
       navigate("/");
     }
   }, []);
+
+  function onSearch(e){
+    setUser(user.filter(function (user) { 
+      return user.email.toLowerCase().includes(e.target.value.toLowerCase()) || 
+      (user.firstName && user.firstName.toLowerCase().includes(e.target.value.toLowerCase()) )||
+      (user.lastName && user.lastName.toLowerCase().includes(e.target.value.toLowerCase())) ||
+      (user._id === e.target.value)
+  }));
+
+  }
 
   async function fetchData() {
     await axios
@@ -45,6 +56,22 @@ function Admin() {
         setPassword={setPassword}
         fetchData={fetchData}
       />
+      <form
+        style={{ width: "500px", margin: "20px 0 20px 400px" }}
+        className="d-flex"
+        role="search"
+      >
+        <input
+        onChange={(e)=>{
+          onSearch(e)
+        }}
+          className="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+       
+      </form>
       <div className="container">
         <div className="row justify-content center">
           <div className="col-md-10">

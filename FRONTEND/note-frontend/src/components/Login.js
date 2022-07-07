@@ -37,7 +37,7 @@ const Login = () => {
 
           <form>
             <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">
+              <label htmlFor="exampleInputEmail1" className="form-label" >
                 Email address
               </label>
               <input
@@ -47,9 +47,7 @@ const Login = () => {
                 aria-describedby="emailHelp"
                 onChange={(e) => setUser({ ...user, email: e.target.value })}
               />
-              <div id="emailHelp" className="form-text">
-                We'll never share your email with anyone else.
-              </div>
+              
             </div>
             <div className="mb-3">
               <label htmlFor="exampleInputPassword1" className="form-label">
@@ -71,11 +69,11 @@ const Login = () => {
               <h3>Welcome Back!</h3>
             </div>
             <div className="welcomeImg">
-              <img src={welcomeimg} id="wel-img-id" alt="" />
+              <img src={welcomeimg} id="wel-img-id" alt=""  width="150" height="100"/>
             </div>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
   );
 };

@@ -3,15 +3,25 @@ import NoteForm from "./NoteForm";
 import GetNotes from "./GetNotes";
 import EditModal from "./EditModal";
 import axios from "axios";
+import { useNavigate } from 'react-router'
+
+
+
 
 function Notes() {
+  const navigate = useNavigate();
   const [title, settitle] = useState("");
   const [desc, setdesc] = useState("");
   const [notes, setNotes] = useState();
   const [edit, setedit] = useState("");
 
   useEffect(() => {
-    fetchData();
+    if("userData" in localStorage){
+      fetchData(); 
+    }else{
+      navigate('/Login');
+    }
+   
   }, []);
 
   async function fetchData() {
