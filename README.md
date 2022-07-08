@@ -21,10 +21,12 @@ FOR FRONT-END
 
 $ cd FRONTEND
 $ cd note-frontend
+$ npm install
 $ npm start
 
 For BACK-END
 
 $ cd BACKEND
-$ npm run start
-``
+$ npm insall
+$ npm run dev
+```
